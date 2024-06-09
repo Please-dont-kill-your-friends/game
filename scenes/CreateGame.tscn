@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqf7jqusr7s3x"]
+
+[ext_resource type="Script" path="res://scripts/lobby/CreateGame.gd" id="1_f3kl1"]
+
+[node name="CreateGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f3kl1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.552941, 0.32549, 0.831373, 1)
+
+[node name="OpenLobby" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OpenLobbyButton" type="Button" parent="OpenLobby"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -37.5
+offset_right = 150.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Open Lobby"
+
+[node name="LobbyOpened" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoomCode" type="Label" parent="LobbyOpened"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -21.0
+offset_right = 40.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConnectedPeersLabel" type="Label" parent="LobbyOpened"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.132
+anchor_top = 0.04
+anchor_right = 0.132
+anchor_bottom = 0.04
+offset_left = -122.064
+offset_top = -20.92
+offset_right = 120.936
+offset_bottom = 21.08
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Connected Peers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="LobbyOpened"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.083
+anchor_right = 0.266
+anchor_bottom = 1.0
+offset_top = 0.215996
+offset_right = -0.432007
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+
+[connection signal="pressed" from="OpenLobby/OpenLobbyButton" to="." method="_on_open_lobby_button_pressed"]
