@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqf7jqusr7s3x"]
+
+[ext_resource type="Script" path="res://scripts/ui/lobby/UILobby.gd" id="1_uo5jv"]
+[ext_resource type="Shader" path="res://shader/scroll_right.gdshader" id="2_rv83h"]
+[ext_resource type="Texture2D" uid="uid://d2p7lxfxwx47j" path="res://images/scroll_tile.png" id="3_e8oin"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sad76"]
+shader = ExtResource("2_rv83h")
+
+[node name="CreateGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uo5jv")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.235294, 0.235294, 0.235294, 1)
+material = SubResource("ShaderMaterial_sad76")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -638.0
+offset_top = -444.0
+offset_right = 2976.0
+offset_bottom = 1622.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_e8oin")
+expand_mode = 1
+stretch_mode = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dug5gvg3wixj4"
-path="res://.godot/imported/splashscreen.png-a198e4cd50a3050efd21da067d548d93.ctex"
+uid="uid://d2p7lxfxwx47j"
+path="res://.godot/imported/scroll_tile.png-16db103c504746d8c9afe9823e7d13d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/splashscreen.png"
-dest_files=["res://.godot/imported/splashscreen.png-a198e4cd50a3050efd21da067d548d93.ctex"]
+source_file="res://images/scroll_tile.png"
+dest_files=["res://.godot/imported/scroll_tile.png-16db103c504746d8c9afe9823e7d13d6.ctex"]
 
 [params]
 
