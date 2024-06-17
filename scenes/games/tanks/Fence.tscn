@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkqkfvuy3uanv"]
+
+[ext_resource type="Texture2D" uid="uid://dxnv56lguyuia" path="res://images/games/tanks/fenceRed.png" id="1_wdlw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmj5r"]
+size = Vector2(96, 16)
+
+[node name="Fence" type="StaticBody2D"]
+
+[node name="FenceRed" type="Sprite2D" parent="."]
+texture = ExtResource("1_wdlw8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nmj5r")

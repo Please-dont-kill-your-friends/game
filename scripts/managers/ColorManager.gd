@@ -22,7 +22,6 @@ var used_colors: Array[COLORS] = []
 
 func get_color(color: int) -> Color:
 	return _colors[color]
-	pass
 
 func get_unique_color() -> COLORS:
 	var color: COLORS

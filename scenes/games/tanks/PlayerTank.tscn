@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct8dgr3cr0lko"]
+
+[ext_resource type="Script" path="res://scripts/games/tanks/TankPlayerController.gd" id="1_jqmpm"]
+[ext_resource type="Texture2D" uid="uid://b4g6o73yhlvpu" path="res://images/games/tanks/tank_sand.png" id="1_w1dfo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vu77b"]
+size = Vector2(40, 42)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 3.14159
+script = ExtResource("1_jqmpm")
+
+[node name="TankSprite" type="Sprite2D" parent="."]
+position = Vector2(3, 0)
+rotation = 4.71239
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_w1dfo")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vu77b")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(29, 0)

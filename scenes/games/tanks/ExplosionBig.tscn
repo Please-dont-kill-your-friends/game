@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://xauohvci6qmj"]
+
+[ext_resource type="Texture2D" uid="uid://be5kpxcg1bo38" path="res://images/games/tanks/animations/explosion_big/explosionSmoke1.png" id="1_pcrrn"]
+[ext_resource type="Texture2D" uid="uid://bjo0lxqjs2ucg" path="res://images/games/tanks/animations/explosion_big/explosionSmoke2.png" id="2_uk1l5"]
+[ext_resource type="Texture2D" uid="uid://dlk1m7ea6v3r3" path="res://images/games/tanks/animations/explosion_big/explosionSmoke3.png" id="3_lde0c"]
+[ext_resource type="Texture2D" uid="uid://dcw8rr22fj32j" path="res://images/games/tanks/animations/explosion_big/explosionSmoke4.png" id="4_enrqa"]
+[ext_resource type="Texture2D" uid="uid://b8lb3y0astnts" path="res://images/games/tanks/animations/explosion_big/explosionSmoke5.png" id="5_1lkw0"]
+[ext_resource type="Script" path="res://scripts/games/AminationFinished.gd" id="6_o1a67"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1krib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pcrrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uk1l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lde0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_enrqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1lkw0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 18.0
+}]
+
+[node name="ExplosionBig" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1krib")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+script = ExtResource("6_o1a67")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

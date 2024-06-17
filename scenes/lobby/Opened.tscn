@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl2ogq87ilna5"]
+[gd_scene load_steps=4 format=3 uid="uid://cl2ogq87ilna5"]
 
 [ext_resource type="Script" path="res://scripts/ui/lobby/UIOpened.gd" id="1_5euqb"]
 [ext_resource type="FontFile" uid="uid://erbfs7wylgra" path="res://fonts/MoreSugar.otf" id="1_12mff"]
+[ext_resource type="Script" path="res://scripts/ui/lobby/UIStartGame.gd" id="3_m22d0"]
 
 [node name="Opened" type="Control"]
 layout_mode = 3
@@ -37,3 +38,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 175
 alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -145.0
+offset_right = 150.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_12mff")
+theme_override_font_sizes/font_size = 50
+text = "Start!"
+script = ExtResource("3_m22d0")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]

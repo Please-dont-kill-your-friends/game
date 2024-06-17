@@ -19,6 +19,7 @@ boot_splash/minimum_display_time=500
 [autoload]
 
 ColorManager="*res://scripts/managers/ColorManager.gd"
+SoundManager="*res://scripts/managers/SoundManager.gd"
 PlayerManager="*res://scripts/managers/PlayerManager.gd"
 LobbyManager="*res://scripts/managers/LobbyManager.gd"
 CommunicationManager="*res://scripts/managers/CommunicationManager.gd"

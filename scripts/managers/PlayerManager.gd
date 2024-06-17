@@ -2,6 +2,7 @@ extends Node
 
 signal player_joined(player: Player)
 
+var locked: bool = true
 var used_colors: Array[ColorManager.COLORS] = [] 
 var players: Dictionary = {}
 
@@ -13,6 +14,7 @@ func _ready():
 func _on_received_username(id: int, username: String):
 	var player: Player = Player.new()
 	var color = ColorManager.get_unique_color()
+	player.id = id
 	player.color = color
 	player.username = username
 	players[id] = player

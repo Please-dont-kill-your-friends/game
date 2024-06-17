@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://mu4rg1wr3qyx"]
+
+[ext_resource type="Texture2D" uid="uid://b18so23feie4s" path="res://images/games/tanks/crateMetal.png" id="1_ggtqi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ybbs"]
+size = Vector2(28, 28)
+
+[node name="MetalCrate" type="StaticBody2D"]
+
+[node name="CrateMetal" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ggtqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ybbs")
