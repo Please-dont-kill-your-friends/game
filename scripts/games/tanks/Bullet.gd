@@ -23,6 +23,6 @@ func _physics_process(_delta):
 		small_explosion_instance.rotation_degrees = randi() % 360
 		get_parent().add_child(small_explosion_instance)
 		
-		SoundManager.play_audio_at_pos(SoundManager.GAME_AUDIO.TANK_SMALL_EXPLODE, global_position, get_parent())
+		SoundManager.play_audio_at_pos(SoundManager.GAME_AUDIO.TANK_SMALL_EXPLODE, global_position)
 		queue_free()
 	pass

@@ -47,17 +47,19 @@ func _shoot():
 	bullet_instance.modulate = ColorManager.get_color(player.color)
 	bullet_instance.sender = self
 	
-	SoundManager.play_audio_at_pos(SoundManager.GAME_AUDIO.TANK_SHOOT, $Muzzle.global_position, get_parent())
+	SoundManager.play_audio_at_pos(SoundManager.GAME_AUDIO.TANK_SHOOT, $Muzzle.global_position)
 	shoot_bullet.emit(bullet_instance)
 	pass
 
 func explode(sender: CharacterBody2D):
+	CommunicationManager.server_disable_button_a.rpc_id(player.id, true)
+	
 	var big_explosion_instance: AnimatedSprite2D = big_explosion_scene.instantiate()
 	big_explosion_instance.global_position = global_position
 	big_explosion_instance.rotation_degrees = randi() % 360
 	get_parent().get_parent().add_child(big_explosion_instance)
 	
-	SoundManager.play_audio_at_pos(SoundManager.GAME_AUDIO.TANK_BIG_EXPLODE, global_position, get_parent())
+	SoundManager.play_audio_at_pos(SoundManager.GAME_AUDIO.TANK_BIG_EXPLODE, global_position)
 	queue_free()
 	tank_exploded.emit(player.id, sender)
 	pass
@@ -82,5 +84,6 @@ func _create_cooldown_timer():
 
 func _on_timer_cooldown_timeout(timer: Timer):
 	timer.queue_free()
-	CommunicationManager.server_disable_button_a.rpc_id(player.id, false)
+	if not PlayerManager.locked:
+		CommunicationManager.server_disable_button_a.rpc_id(player.id, false)
 	pass

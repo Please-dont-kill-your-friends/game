@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://ri1ldghla1es"]
+
+[ext_resource type="PackedScene" uid="uid://bqmao7edgfrrq" path="res://scenes/reuseable/Background.tscn" id="1_76cgv"]
+[ext_resource type="Script" path="res://scripts/ui/ranking/UIRanking.gd" id="1_v712m"]
+[ext_resource type="FontFile" uid="uid://erbfs7wylgra" path="res://fonts/MoreSugar.otf" id="4_2ny84"]
+[ext_resource type="Shader" path="res://shader/glow.gdshader" id="4_7b20c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7xfwc"]
+shader = ExtResource("4_7b20c")
+shader_parameter/rect_size = Vector2(0.725, 0.005)
+shader_parameter/bness = 0.03
+shader_parameter/fall_off_scale = 7.74
+shader_parameter/b_offset = 0.0
+
+[node name="Ranking" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v712m")
+
+[node name="Background" parent="." instance=ExtResource("1_76cgv")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 3614.0
+offset_bottom = 2066.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ScoreBarContainer" type="HBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="FinishLine" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gold 1" type="ColorRect" parent="FinishLine"]
+material = SubResource("ShaderMaterial_7xfwc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.937255, 0.74902, 0.0156863, 1)
+
+[node name="Gold 2" type="ColorRect" parent="FinishLine"]
+material = SubResource("ShaderMaterial_7xfwc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.937255, 0.74902, 0.0156863, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="FinishLine"]
+position = Vector2(573, 203)
+amount = 50
+emission_shape = 3
+emission_rect_extents = Vector2(580, 1)
+color = Color(1, 0.804, 0.02, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -274.0
+offset_right = 274.0
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_2ny84")
+theme_override_font_sizes/font_size = 150
+text = "Ranking"

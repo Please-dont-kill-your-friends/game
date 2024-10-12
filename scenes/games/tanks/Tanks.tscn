@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bo8hriu335v37" path="res://images/games/tanks/terrainTiles_retina.png" id="1_fme20"]
 [ext_resource type="Script" path="res://scripts/games/tanks/Tanks.gd" id="1_j5d1v"]
 [ext_resource type="PackedScene" uid="uid://mu4rg1wr3qyx" path="res://scenes/games/tanks/MetalCrate.tscn" id="2_0bklc"]
-[ext_resource type="PackedScene" uid="uid://ccxs0gynwv1ad" path="res://scenes/overlay/StartAnimation.tscn" id="3_ce06s"]
+[ext_resource type="PackedScene" uid="uid://ccxs0gynwv1ad" path="res://scenes/animations/StartAnimation.tscn" id="3_ce06s"]
 [ext_resource type="PackedScene" uid="uid://bkqkfvuy3uanv" path="res://scenes/games/tanks/Fence.tscn" id="4_fnum8"]
 [ext_resource type="Texture2D" uid="uid://c2ekkpe0mk5lt" path="res://images/games/tanks/ambiente/oilSpill_small.png" id="5_snd0k"]
 [ext_resource type="Texture2D" uid="uid://nbonxwowfsfm" path="res://images/games/tanks/ambiente/treeBrown_large.png" id="5_v8h28"]
