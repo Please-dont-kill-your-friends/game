@@ -31,9 +31,8 @@ func server_send_bg_color(_bg_color: Color):
 	pass
 
 @rpc("authority", "call_remote", "reliable")
-func sever_send_scene_change():
+func sever_set_controller_joystick():
 	pass
-
 
 @rpc("authority", "call_remote", "reliable")
 func server_disable_button_a(_disabled: bool):
@@ -41,4 +40,8 @@ func server_disable_button_a(_disabled: bool):
 
 @rpc("authority", "call_remote", "reliable")
 func server_disable_button_b(_disabled: bool):
+	pass
+
+@rpc("authority", "call_remote", "reliable")
+func server_send_ranking(_rank: int, _points: int):
 	pass

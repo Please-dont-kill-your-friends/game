@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://3rnlm8d0cyqe"]
+
+[ext_resource type="Script" path="res://scripts/ui/loading_screen/LoadingScreen.gd" id="1_ij34t"]
+[ext_resource type="PackedScene" uid="uid://bqmao7edgfrrq" path="res://scenes/reuseable/Background.tscn" id="2_5fc74"]
+[ext_resource type="FontFile" uid="uid://erbfs7wylgra" path="res://fonts/MoreSugar.otf" id="3_illlc"]
+[ext_resource type="Texture2D" uid="uid://uxmddg68trtk" path="res://images/circle_outline.png" id="4_h1ylw"]
+[ext_resource type="Script" path="res://scripts/ui/loading_screen/RotatingProgressBar.gd" id="5_v6ihy"]
+[ext_resource type="Script" path="res://scripts/ui/loading_screen/Countdown.gd" id="6_7sbvo"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ij34t")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -22.0
+offset_top = -17.0
+offset_right = 1204.0
+offset_bottom = 418.0
+stretch_mode = 4
+
+[node name="Background" parent="." instance=ExtResource("2_5fc74")]
+layout_mode = 1
+offset_top = 396.0
+offset_bottom = 916.0
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 388.0
+offset_right = 409.0
+offset_bottom = 573.0
+theme_override_fonts/font = ExtResource("3_illlc")
+theme_override_font_sizes/font_size = 150
+text = "Name"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 541.0
+offset_right = 1008.0
+offset_bottom = 644.0
+theme_override_fonts/font = ExtResource("3_illlc")
+theme_override_font_sizes/font_size = 40
+text = "A very informative description."
+autowrap_mode = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1019.0
+offset_top = 515.0
+offset_right = 1275.0
+offset_bottom = 771.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+rounded = true
+fill_mode = 4
+radial_initial_angle = 210.0
+radial_fill_degrees = 60.0
+texture_progress = ExtResource("4_h1ylw")
+script = ExtResource("5_v6ihy")
+
+[node name="Countdown" type="Label" parent="TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -43.5
+offset_right = 42.5
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_illlc")
+theme_override_font_sizes/font_size = 120
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_7sbvo")

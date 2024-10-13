@@ -33,11 +33,15 @@ WebRTCConnection="*res://scripts/networking/webrtc/WebRTCConnection.gd"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+movie_writer/vsync/vsync_mode=1
+movie_writer/stretch/aspect="expand"
+movie_writer/size/initial_position_type=1
 
 [editor_plugins]
 

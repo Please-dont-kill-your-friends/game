@@ -1,19 +1,25 @@
-extends Node2D
+extends Game
 
 var tank_player: PackedScene = load("res://scenes/games/tanks/PlayerTank.tscn")
-var player_scores: Dictionary = {}
 var players_in_round: Array[int] = []
+const ROUNDS_TO_WIN: int = 3
 
-func _ready():
-	$StartAnimation.animation_finished.connect(_on_animation_finished)
-	
-	_init_scores()
-	_spawn_players()
+func _update_controller():
+	CommunicationManager.sever_set_controller_joystick.rpc()
 	pass
 
-func _init_scores():
-	for player in PlayerManager.players.values():
-		player_scores[player.id] = 0
+func _init_game():
+	$StartAnimation.animation_finished.connect(_on_animation_finished)
+	pass
+
+func _start_game():
+	_start_round()
+	pass
+
+func _start_round():
+	# Spawn players and start round after all players are spawned
+	_spawn_players()
+	$StartAnimation.start_animation()
 	pass
 
 func _spawn_players():
@@ -45,51 +51,52 @@ func _spawn_players():
 		players_in_round.append(player.id)
 		already_spawned_at.append(random_index)
 		CommunicationManager.server_disable_button_a.rpc_id(player.id, true)
-	
-	# Start round after all players are spawned
-	$StartAnimation.start_animation()
 	pass
 
-func _spawn_player():
-	pass
-
-func _check_win():
+func _check_win(sender: CharacterBody2D):
+	if players_in_round.size() == 1:
+		CommunicationManager.server_disable_button_a.rpc(true)
+		
+		for bullet in $Bullets.get_children():
+			$Bullets.remove_child(bullet)
+			bullet.queue_free()
+		
 	player_scores[players_in_round[0]] += 1
+	$Camera.zoom_to_winner(sender.global_position)
+	await get_tree().create_timer(3.0).timeout
 	
+	if player_scores.get(_get_higest_ranking_player()) == ROUNDS_TO_WIN:
+		_stop_game(_get_higest_ranking_player())
+	else:
+		_stop_round()
+		_start_round()
+	pass
+
+func _stop_round():
+	for player in $Players.get_children():
+		$Players.remove_child(player)
+		player.queue_free() 
+		
+	$Camera.zoom_out()
+	PlayerManager.locked = true
+	pass
+
+func _get_higest_ranking_player() -> int:
+	# Sort all Players by rank
 	var sorted_player_scores = player_scores.keys()
 	sorted_player_scores.sort_custom(func(a,b):
 		return player_scores[b] < player_scores[a]
 		# Character ">" would be ascending, "<" is descending
 	)
 	
-	var winning_player = sorted_player_scores[0]
-	if player_scores.get(winning_player) == 3:
-		ScoreManager.update_scores(player_scores)
-	else:
-		for child in $Players.get_children():
-			$Players.remove_child(child)
-			child.queue_free() 
-		
-		$Camera.zoom_out()
-		_spawn_players()
-		PlayerManager.locked = false
-	pass
+	# Get higest ranking Player
+	return sorted_player_scores[0]
 
 func _on_tank_exploded(id: int, sender: CharacterBody2D):
 	$Camera.apply_shake()
 	players_in_round.erase(id)
 	
-	if players_in_round.size() == 1:
-		PlayerManager.locked = true
-		CommunicationManager.server_disable_button_a.rpc_id(players_in_round[0], true)
-		for bullet in $Bullets.get_children():
-			$Bullets.remove_child(bullet)
-			bullet.queue_free()
-		$Camera.zoom_to_winner(sender.global_position)
-		
-		await get_tree().create_timer(3.0).timeout
-		
-		_check_win()
+	_check_win(sender)
 	pass
 
 func _on_shoot_bullet(bullet: CharacterBody2D):
